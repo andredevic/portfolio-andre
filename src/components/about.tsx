@@ -1,45 +1,54 @@
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import DownloadCVButton from './cvdownloadbutton';
+import { useTranslation } from 'react-i18next';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '../components/ui/card';
+import DownloadCVButton from '../components/cvdownloadbutton';
 import { BriefcaseBusiness, User } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const AboutSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="aboutme" className="bg-transparent py-20 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="gradient-text mb-4 text-5xl text-white/85 md:text-4xl">
-            About
-            <span className="text-4xl font-thin text-neutral-500"> Me </span>
+            {t('about_title_part1')}
+            <span className="text-4xl font-thin text-neutral-500">
+              {t('about_title_part2')}
+            </span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Learn more about my career and professional services
+            {t('about_subtitle')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <motion.div
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-1 gap-8 lg:grid-cols-2"
+        >
           {/* Perfil Profissional */}
           <Card className="group border-transparent bg-white/5 transition-all duration-300 hover:border-purple-200/60 hover:shadow-sm hover:shadow-purple-200/60">
             <CardHeader>
               <CardTitle className="gradient-text flex items-center gap-3">
                 <User className="h-6 w-6 text-white/80" />
-                <span className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text tracking-tight text-transparent">
-                  Quem sou eu?
+                <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-slate-300 bg-clip-text tracking-tight text-transparent">
+                  {t('about_who_am_i_title')}
                 </span>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="leading-relaxed text-white/80">
-                Sou André Ferreira, estudante de Engenharia de Software e
-                Desenvolvedor Full Stack apaixonado por criar aplicações
-                escaláveis e resolver problemas reais com tecnologia.
+                {t('about_who_am_i_p1')}
               </p>
               <p className="leading-relaxed text-white/80">
-                Tenho especialização em Node.js, React, TypeScript e
-                arquiteturas modernas para web, transformando desafios complexos
-                em soluções limpas, bem estruturadas e de fácil manutenção.
-                Atualmente, busco uma oportunidade para crescer ao lado de
-                profissionais experientes, aprimorar minhas habilidades e
-                contribuir em projetos de impacto.
+                {t('about_who_am_i_p2')}
               </p>
               <DownloadCVButton />
             </CardContent>
@@ -50,57 +59,44 @@ const AboutSection = () => {
             <CardHeader>
               <CardTitle className="gradient-text flex items-center gap-3">
                 <BriefcaseBusiness className="h-6 w-6 text-white/80" />
-                <span className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text tracking-tight text-transparent">
-                  O que eu faço?
+                <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-slate-300 bg-clip-text tracking-tight text-transparent">
+                  {t('about_what_i_do_title')}
                 </span>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
-                <h3>Backend Services:</h3>
+                <h3 className="font-semibold text-white/90">
+                  {t('about_what_i_do_subtitle')}
+                </h3>
                 <div className="flex items-start gap-3">
-                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-accent" />
-                  <p className="text-white/80">
-                    Criação e manutenção de APIs RESTful escaláveis
-                  </p>
+                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-purple-400" />
+                  <p className="text-white/80">{t('about_what_i_do_item1')}</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-accent" />
-                  <p className="text-white/80">
-                    Autenticação, autorização e segurança no tratamento de dados
-                  </p>
+                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-purple-400" />
+                  <p className="text-white/80">{t('about_what_i_do_item2')}</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-accent" />
-                  <p className="text-white/80">
-                    Modelagem, otimização e integração de bancos de dados (SQL &
-                    NoSQL)
-                  </p>
+                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-purple-400" />
+                  <p className="text-white/80">{t('about_what_i_do_item3')}</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-accent" />
-                  <p className="text-white/80">
-                    Arquitetura de microsserviços e integrações entre sistemas
-                  </p>
+                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-purple-400" />
+                  <p className="text-white/80">{t('about_what_i_do_item4')}</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-accent" />
-                  <p className="text-white/80">
-                    Desenvolvimento de interfaces modernas com React e
-                    TypeScript
-                  </p>
+                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-purple-400" />
+                  <p className="text-white/80">{t('about_what_i_do_item5')}</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-accent" />
-                  <p className="text-white/80">
-                    Deploy e automação com Docker, CI/CD e aplicações preparadas
-                    para a nuvem
-                  </p>
+                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-purple-400" />
+                  <p className="text-white/80">{t('about_what_i_do_item6')}</p>
                 </div>
               </div>
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

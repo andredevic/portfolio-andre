@@ -5,6 +5,7 @@ import Navbar from './components/navbar.js';
 
 import { ProjectsSection } from './components/projects-section.js';
 import Technologies from './components/Technologies.js';
+import { Toaster } from './components/ui/toaster.js';
 function App() {
   return (
     <section id="home">
@@ -19,6 +20,7 @@ function App() {
           <Technologies />
           <ProjectsSection />
           <ContactSection />
+          <Toaster />
         </div>
       </div>
     </section>

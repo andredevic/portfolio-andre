@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   Code,
   Container,
@@ -6,60 +7,70 @@ import {
   Repeat2,
   Server,
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+// Lembre-se de verificar se este caminho está correto para sua estrutura de pastas
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '../components/ui/card';
+import { motion } from 'framer-motion';
 
 const Technologies = () => {
+  const { t } = useTranslation();
+
+  // Array de tecnologias com o novo conteúdo e chaves de tradução
   const technologies = [
     {
-      icon: <Server className="h-8 w-8 text-white/80" />,
-      title: 'Node.js',
-      description:
-        'Scalable and secure APIs with Express, Fastify, and NestJS. Microservices development, JWT authentication, RBAC, TypeScript, and robust architectures.',
+      icon: <Code className="h-8 w-8 text-purple-300" />,
+      title: t('skills_card1_title'),
+      description: t('skills_card1_desc'),
     },
     {
-      icon: <Layers className="h-8 w-8 text-white/80" />,
-      title: 'architecture',
-      description:
-        'Design patterns (MVC, SOLID, DDD). Focus on clean, maintainable code and scalable software architecture.',
+      icon: <Server className="h-8 w-8 text-purple-300" />,
+      title: t('skills_card2_title'),
+      description: t('skills_card2_desc'),
     },
     {
-      icon: <Database className="h-8 w-8 text-white/80" />,
-      title: 'Database',
-      description:
-        'Experience with Prisma ORM, PostgreSQL, MySQL, MongoDB, and other NoSQL databases. Data modeling, query optimization, and database design.',
+      icon: <Database className="h-8 w-8 text-purple-300" />,
+      title: t('skills_card3_title'),
+      description: t('skills_card3_desc'),
     },
     {
-      icon: <Code className="h-8 w-8 text-white/80" />,
-      title: 'Automatizated Tests',
-      description:
-        'Jest, Supertest, unit and e2e tests for reliable and maintainable code.',
+      icon: <Layers className="h-8 w-8 text-purple-300" />,
+      title: t('skills_card4_title'),
+      description: t('skills_card4_desc'),
     },
     {
-      icon: <Container className="h-8 w-8 text-white/80" />,
-      title: 'DevOps',
-      description:
-        'Docker, GitHub Actions, CI/CD pipelines. Infrastructure as code and automated deployments.',
+      icon: <Container className="h-8 w-8 text-purple-300" />,
+      title: t('skills_card5_title'),
+      description: t('skills_card5_desc'),
     },
     {
-      icon: <Repeat2 className="h-8 w-8 text-white/80" />,
-      title: 'Messaging & Scalability',
-      description: 'Kafka, RabbitMQ, Redis, asynchronous queues.',
+      icon: <Repeat2 className="h-8 w-8 text-purple-300" />,
+      title: t('skills_card6_title'),
+      description: t('skills_card6_desc'),
     },
   ];
+
   return (
     <section id="tecnologias" className="bg-transparent py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="gradient-text font-work-sans mb-4 text-3xl text-white/85 md:text-4xl">
-            Technical Expertise
+            {t('skills_title')}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Technologies and tools that I master to create complete and
-            innovative solutions
+            {t('skills_subtitle')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
           {technologies.map((tech, index) => (
             <Card
               key={index}
@@ -70,7 +81,7 @@ const Technologies = () => {
                   <div className="text-accent transition-transform duration-300 group-hover:scale-110">
                     {tech.icon}
                   </div>
-                  <span className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text tracking-tight text-transparent">
+                  <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-slate-300 bg-clip-text text-base tracking-tight text-transparent">
                     {tech.title}
                   </span>
                 </CardTitle>
@@ -82,7 +93,7 @@ const Technologies = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

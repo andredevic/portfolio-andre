@@ -1,146 +1,161 @@
+// O erro "Could not resolve 'react-i18next'" acontece porque a biblioteca não está instalada.
+// Para corrigir, por favor, rode este comando no seu terminal:
+// npm install react-i18next
+
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
-import Restaurant from '../assets/restaurant-reservation-dashboard.png';
-import Ecommerce from '../assets/modern-ecommerce-platform.png';
-import Task from '../assets/task-management-app.png';
-import Analytics from '../assets/analytics-dashboard.png';
-import SocialMedia from '../assets/social-media-api-docs.png';
-import Iot from '../assets/iot-monitoring-dashboard.png';
+import currencyImage from '../assets/crypto.png';
+import taskImage from '../assets/manager.png';
+import Gym from '../assets/gym.png';
+import DietImage from '../assets/diet.png';
+import PetImage from '../assets/pet.png';
+import NodejsImage from '../assets/nodejscrud.png';
+import { motion } from 'framer-motion';
 
 export function ProjectsSection() {
+  const { t } = useTranslation();
+
   const projects = [
     {
-      title: 'Sistema de Reservas',
-      description:
-        'API REST completa para reservas de restaurantes com autenticação JWT, notificações em tempo real e painel administrativo.',
-      image: Restaurant,
-      tags: ['React', 'Node.js', 'PostgreSQL', 'Prisma', 'WebSocket'],
-      github: '#',
-      demo: '#',
+      titleKey: 'project_1_title',
+      descKey: 'project_1_desc',
+      techKey: 'project_1_tech',
+      image: Gym,
+      githubLink: 'https://github.com/andredevic/API_solid_GymPass.git',
     },
     {
-      title: 'E-commerce Platform',
-      description:
-        'Plataforma de e-commerce com carrinho de compras, pagamentos integrados, gestão de estoque e analytics em tempo real.',
-      image: Ecommerce,
-      tags: ['Next.js', 'TypeScript', 'Stripe', 'MongoDB', 'Tailwind'],
-      github: '#',
-      demo: '#',
+      titleKey: 'project_2_title',
+      descKey: 'project_2_desc',
+      techKey: 'project_2_tech',
+      image: currencyImage,
+      githubLink: 'https://github.com/andredevic/currency-cripto.git',
+      demoLink: 'https://currency-cripto.vercel.app/',
     },
     {
-      title: 'Task Management App',
-      description:
-        'Aplicativo de gerenciamento de tarefas com colaboração em equipe, notificações push e sincronização offline.',
-      image: Task,
-      tags: ['React Native', 'Express', 'Socket.io', 'Redis', 'PWA'],
-      github: '#',
-      demo: '#',
+      titleKey: 'project_3_title',
+      descKey: 'project_3_desc',
+      techKey: 'project_3_tech',
+      image: PetImage,
+      githubLink: 'https://github.com/andredevic/API_solid_FindAPet.git',
     },
     {
-      title: 'Analytics Dashboard',
-      description:
-        'Dashboard de analytics com visualizações interativas, relatórios personalizados e integração com múltiplas fontes de dados.',
-      image: Analytics,
-      tags: ['Vue.js', 'D3.js', 'FastAPI', 'ClickHouse', 'Docker'],
-      github: '#',
-      demo: '#',
+      titleKey: 'project_4_title',
+      descKey: 'project_4_desc',
+      techKey: 'project_4_tech',
+      image: taskImage,
+      githubLink: 'https://github.com/andredevic/task_manager_react.git',
+      demoLink: 'https://task-manager-react-chi.vercel.app/',
     },
     {
-      title: 'Social Media API',
-      description:
-        'API robusta para rede social com feed personalizado, sistema de likes/comentários e moderação de conteúdo.',
-      image: SocialMedia,
-      tags: ['NestJS', 'GraphQL', 'MySQL', 'ElasticSearch', 'AWS'],
-      github: '#',
-      demo: '#',
+      titleKey: 'project_5_title',
+      descKey: 'project_5_desc',
+      techKey: 'project_5_tech',
+      image: DietImage,
+      githubLink: 'https://github.com/andredevic/API_diet_nodejs.git',
     },
     {
-      title: 'IoT Monitoring System',
-      description:
-        'Sistema de monitoramento IoT com coleta de dados em tempo real, alertas automáticos e visualização de métricas.',
-      image: Iot,
-      tags: ['React', 'MQTT', 'InfluxDB', 'Grafana', 'Kubernetes'],
-      github: '#',
-      demo: '#',
+      titleKey: 'project_6_title',
+      descKey: 'project_6_desc',
+      techKey: 'project_6_tech',
+      image: NodejsImage,
+      githubLink: 'https://github.com/andredevic/node_raw_crud_API.git',
     },
   ];
+
+  const handleLinkClick = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section id="projects" className="bg-transparent py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="gradient-text mb-4 text-5xl text-white/85 md:text-4xl">
-            Projects
+            {t('projects_title')}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Some projects i have developed applying best practices and modern
-            technologies
+            {t('projects_subtitle')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+        >
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group border-transparent bg-white/5 transition-all duration-300"
+              className="group flex flex-col overflow-hidden rounded-md border border-white/10 bg-white/5 transition-all duration-300 hover:border-purple-300/30 hover:shadow-lg hover:shadow-purple-500/10"
             >
               <div className="relative overflow-hidden">
                 <img
-                  src={project.image || '../assets/placeholder.svg'}
-                  alt={project.title}
+                  src={project.image}
+                  alt={t(project.titleKey)}
                   width={400}
                   height={200}
-                  className="h-44 w-full rounded-t-md object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="h-44 w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
 
               <CardHeader>
-                <CardTitle className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text tracking-tight text-transparent">
-                  {project.title}
+                {/* Gradiente sutil para o título, sem rosa */}
+                <CardTitle className="bg-gradient-to-r from-slate-300 to-purple-400 bg-clip-text tracking-tight text-transparent">
+                  {t(project.titleKey)}
                 </CardTitle>
               </CardHeader>
 
-              <CardContent className="space-y-4">
+              <CardContent className="flex flex-1 flex-col justify-between space-y-4">
                 <p className="text-sm leading-relaxed text-white/80">
-                  {project.description}
+                  {t(project.descKey)}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <Badge
-                      key={tagIndex}
-                      variant="secondary"
-                      className="border-purple-200/60 bg-purple-300/30 text-xs text-purple-200/80"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
+                <div>
+                  <div className="flex flex-wrap gap-2">
+                    {t(project.techKey)
+                      .split(', ')
+                      .map((tag, tagIndex) => (
+                        <Badge
+                          key={tagIndex}
+                          variant="secondary"
+                          className="border border-purple-400/30 bg-purple-400/10 text-xs font-medium text-purple-300"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                  </div>
 
-                <div className="flex gap-2 pt-2">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="flex-1 border-purple-300 bg-transparent hover:bg-purple-400/70"
-                  >
-                    <Github className="mr-2 h-4 w-4" />
-                    Code
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-purple-300 text-accent-foreground hover:bg-purple-400/70"
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Demo
-                  </Button>
+                  <div className="flex gap-3 pt-4">
+                    <Button
+                      onClick={() => handleLinkClick(project.githubLink)}
+                      size="sm"
+                      variant="outline"
+                      className="flex-1 border-purple-300/50 bg-transparent text-purple-200 transition-colors hover:border-purple-300 hover:bg-purple-400/10 hover:text-white"
+                    >
+                      <Github className="mr-2 h-4 w-4" />
+                      {t('project_button_code')}
+                    </Button>
+                    {project.demoLink && (
+                      <Button
+                        onClick={() => handleLinkClick(project.demoLink)}
+                        size="sm"
+                        // Gradiente de roxo para índigo, sem rosa
+                        className="flex-1 bg-gradient-to-r from-purple-600 to-indigo-700 text-white transition-opacity hover:opacity-90"
+                      >
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        {t('project_button_demo')}
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </CardContent>
             </Card>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

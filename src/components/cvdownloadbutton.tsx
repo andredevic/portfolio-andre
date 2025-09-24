@@ -1,23 +1,34 @@
-import { Button } from '@/components/ui/button'; // Ajuste o caminho conforme a estrutura do seu projeto
-import { Download } from 'lucide-react'; // Ícone opcional
+// src/components/DownloadCVButton.tsx
 
-const DownloadCVButton = () => {
+import type { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Button } from '@/components/ui/button';
+import { Download } from 'lucide-react';
+
+const DownloadCVButton: FC = () => {
+  // 1. A função `t` deve ser obtida pelo hook `useTranslation`
+  const { t } = useTranslation();
+
   const handleDownload = () => {
+    // O caminho para o CV deve ser relativo à pasta `public` do seu projeto
     const link = document.createElement('a');
-    link.href = '/cv.pdf'; // Caminho para o arquivo no diretório `public`
-    link.download = 'andre_ferreira_cv.pdf'; // Nome do arquivo ao fazer download
+    link.href = '/cv-andre-ferreira.pdf'; // Exemplo: coloque seu CV na pasta `public`
+    link.download = 'CV_Andre_Ferreira.pdf'; // Nome que o arquivo terá ao ser baixado
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   return (
     <Button
-      variant={'outline'}
       onClick={handleDownload}
-      className="flex items-center gap-2 border-none bg-purple-300 text-accent-foreground hover:bg-purple-400/70 hover:text-accent-foreground"
+      // 2. [DESIGN] Aplicando o mesmo estilo do botão de ação principal
+      className="flex w-full items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-700 text-white transition-opacity hover:opacity-90 sm:w-auto"
+      size="lg" // Adicionando um tamanho para mais destaque
     >
-      <Download className="h-4 w-4" /> {/* Ícone */}
-      Baixar CV
-    </Button>   
+      <Download className="h-4 w-4" />
+      {t('cv_download_button')}
+    </Button>
   );
 };
 
