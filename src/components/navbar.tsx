@@ -78,7 +78,7 @@ const Navbar = () => {
             ))}
 
             {/* Language Switcher - Desktop */}
-            <div className="ml-6 flex items-center gap-2 border-l border-gray-700 pl-6 text-sm">
+            <div className="flex items-center gap-2 border-l border-gray-700 pl-6 text-sm">
               <button
                 onClick={() => changeLanguage('pt')}
                 className={`transition-colors duration-200 ${
