@@ -1,11 +1,11 @@
-import AboutSection from './components/about.js';
-import { ContactSection } from './components/contact-section.js';
-import HeroSection from './components/Hero.js';
-import Navbar from './components/navbar.js';
+import AboutSection from "./components/about";
+import { ContactSection } from "./components/contact-section";
+import HeroSection from "./components/Hero";
+import Navbar from "./components/navbar";
+import { ProjectsSection } from "./components/projects-section";
+import Technologies from "./components/Technologies";
+import { Toaster } from "./components/ui/toaster";
 
-import { ProjectsSection } from './components/projects-section.js';
-import Technologies from './components/Technologies.js';
-import { Toaster } from './components/ui/toaster.js';
 function App() {
   return (
     <section id="home">
@@ -17,7 +17,7 @@ function App() {
           <Navbar />
           <HeroSection />
           <AboutSection />
-          <Technologies />
+          <Technologies/>
           <ProjectsSection />
           <ContactSection />
           <Toaster />
