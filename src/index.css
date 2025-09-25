@@ -67,6 +67,10 @@
     @apply bg-background text-foreground;
   }
 }
+ 
+ html, body {
+  background-color: #1A1726;
+}
 
 html {
   scroll-behavior: smooth;
