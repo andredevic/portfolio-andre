@@ -12,8 +12,8 @@ const DownloadCVButton: FC = () => {
   const handleDownload = () => {
     // O caminho para o CV deve ser relativo à pasta `public` do seu projeto
     const link = document.createElement('a');
-    link.href = '/cv-andre-ferreira.pdf'; // Exemplo: coloque seu CV na pasta `public`
-    link.download = 'CV_Andre_Ferreira.pdf'; // Nome que o arquivo terá ao ser baixado
+    link.href = '/public/curriculo_portfolio.pdf'; // Exemplo: coloque seu CV na pasta `public`
+    link.download = 'curriculo_portfolio.pdf'; // Nome que o arquivo terá ao ser baixado
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
