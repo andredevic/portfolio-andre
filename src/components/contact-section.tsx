@@ -174,7 +174,7 @@ export const ContactSection: FC = () => {
                       onChange={handleChange}
                       placeholder={t('contact_form_name_placeholder')}
                       required
-                      className="mt-2 border-purple-300/30 bg-white/5 focus:border-purple-400 focus:ring-purple-400"
+                      className="mt-2 border-purple-300/30 bg-white/5 text-white focus:border-purple-400 focus:ring-purple-400"
                     />
                   </div>
                   <div>
@@ -189,7 +189,7 @@ export const ContactSection: FC = () => {
                       onChange={handleChange}
                       placeholder={t('contact_form_email_placeholder')}
                       required
-                      className="mt-2 border-purple-300/30 bg-white/5 focus:border-purple-400 focus:ring-purple-400"
+                      className="mt-2 border-purple-300/30 bg-white/5 text-white focus:border-purple-400 focus:ring-purple-400"
                     />
                   </div>
                   <div>
@@ -204,7 +204,7 @@ export const ContactSection: FC = () => {
                       placeholder={t('contact_form_message_placeholder')}
                       rows={5}
                       required
-                      className="mt-2 resize-none border-purple-300/30 bg-white/5 focus:border-purple-400 focus:ring-purple-400"
+                      className="mt-2 resize-none border-purple-300/30 bg-white/5 text-white focus:border-purple-400 focus:ring-purple-400"
                     />
                   </div>
                   <Button
