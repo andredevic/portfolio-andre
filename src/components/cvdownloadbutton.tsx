@@ -10,8 +10,8 @@ const DownloadCVButton: FC = () => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/curriculo_portfolio.pdf';
-    link.download = 'curriculo_portfolio.pdf';
+    link.href = '/resume_andre.pdf';
+    link.download = 'resume_andre.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
